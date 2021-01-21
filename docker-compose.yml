@@ -1,24 +1,26 @@
 version: '3.7'
 services:
-  web:
-    build: ./services/web
-    command: python start.py
+  backend:
+    build:
+      context: ./services/backend
+      dockerfile: Dockerfile
+    command: gunicorn start:create_app --bind 0.0.0.0:8080 --worker-class aiohttp.GunicornWebWorker
     volumes:
-      - ./services/web/:/usr/src/app/
-    ports:
-      - 1234:1234
+      - ./services/backend/:/usr/src/backend/
+    expose:
+      - 8080
     env_file:
       - ./.env
-  db:
-    image: postgres:12-alpine
-    ports:
-    - 5432:5432
+
+
+  nginx:
+    build: ./services/nginx
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_USER=user1234
-      - POSTGRES_PASSWORD=pass1234
-      - POSTGRES_DB=sampledb
- 
+      - static_volume:/usr/src/backend/project/static
+    ports:
+      - 1228:80
+    depends_on:
+      - backend
+
 volumes:
-  postgres_data:
+  static_volume:

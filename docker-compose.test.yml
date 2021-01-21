@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  backend:
+    build:
+      context: ./services/backend
+      dockerfile: Dockerfile
+    command: pytest .
+    volumes:
+      - ./services/backend/:/usr/src/backend/
+    expose:
+      - 8080
+    env_file:
+      - ./.env
