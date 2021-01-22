@@ -19,6 +19,17 @@ services:
       - POSTGRES_USER=user1234
       - POSTGRES_PASSWORD=pass1234
       - POSTGRES_DB=sampledb
- 
+  front:
+    container_name: front
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/usr/src/front'
+      - '/usr/src/front/node_modules'
+    ports:
+      - 3000:3000
+    environment:
+      - CHOKIDAR_USEPOLLING=true
 volumes:
   postgres_data:
