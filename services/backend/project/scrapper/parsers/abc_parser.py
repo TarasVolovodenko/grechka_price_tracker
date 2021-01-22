@@ -3,7 +3,7 @@ Abstract class, that defines website bs4 parser interface.
 """
 
 from abc import ABC, abstractmethod
-from . import Product
+from ...product import Product
 from typing import List
 
 
@@ -14,6 +14,7 @@ class BaseParser(ABC):
     - url : link
     """
     _URL = ""
+    _WEBSITE_TITLE = ""
 
     @property
     def url(self):
@@ -22,6 +23,14 @@ class BaseParser(ABC):
         :return: value of website URL related to certain cls.
         """
         return self._URL
+
+    @property
+    def website_title(self):
+        """
+        Getter for _WEBSITE_TITLE.
+        :return: value of website displaying name.
+        """
+        return self._WEBSITE_TITLE
 
     @abstractmethod
     async def get_products(self) -> List[Product]:

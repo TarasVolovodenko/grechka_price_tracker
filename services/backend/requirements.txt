@@ -1,4 +1,3 @@
-# pytest
 gunicorn
 uvloop
 aiohttp
