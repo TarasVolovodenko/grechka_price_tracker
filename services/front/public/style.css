@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+ * {
+    margin: 0;
+    padding: 0;
+ } 
+.new-r{
+    display: none;
+}
+.title{
+    display: none;
+}
+
+ /* Обертка для всего контента страницы */
+.wrapper{
+    font-family: Montserrat;
+    max-width: 960px;
+    margin: 0 auto;
+    margin-top: 50px;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+}
+/**/
+
+
+/* Таблица наименований гречки */
+.column-name{
+    font-weight: 500;
+}
+.container:not(.column-name){
+    box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-bottom: 26px;
+    padding: 15px 21px;
+}
+.container:not(.col1){
+    text-align: center;
+}
+.column-name{
+    padding: 15px 21px;
+}
+.col p{
+    margin: auto;
+}
+.col1{
+    text-align: left;
+}
+/**/
+
+
+/* Навигация */
+.dot-navi{
+    text-align: center;
+    padding-top: 38px;
+    padding-bottom: 68px;
+    text-decoration: none;
+}
+span{
+    font-size: 30px;
+}
+.dot{
+    display: inline-block;
+    padding-right: 26px;
+}
+.a {
+    border-radius:50%;
+    background:rgb(255, 255, 255);
+    width: 15px;
+    height: 15px;
+    border: 1px solid #333333;
+  }
+  span:first-child{
+      padding-right: 21px;
+  }
+  span:last-child{
+      padding-left: -5px;
+  }
+  .a:before {
+    content:'';
+    display: block;
+    border-radius: 50%;
+    background:rgb(252, 252, 252);
+    width:9px;
+    height: 9px;
+    margin: 0 auto;
+    background-color:  #333333;
+    margin-top: 2px;
+  }
+
+
+  
+  
+@media (max-width: 992px){
+    .container:not(.col1){
+        text-align: left;
+    }
+}
+
+@media (max-width: 768px){
+    .column-name{
+        display: none;
+    }
+    .wrapper{
+        padding: 31px;
+        text-align: center;
+    }
+    .title{
+        display: inline;
+        text-align: center;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+    }
+    .container{
+        margin-top: 36px;
+    }
+}
+
+@media (max-width: 576px){
+    .wrapper{
+        font-size: 10px;
+        line-height: 12px;
+    }
+    .name{
+        font-size: 14px;
+        line-height: 17px;
+    }
+    .container{
+        padding: 26px;
+    }
+    .new-r{
+        display: inline;
+    }
+    .col1{
+        text-align: center;
+    }
+
+
+    .a{
+        width: 10px;
+        height: 10px;
+    }
+    .a:before{
+        width: 6px;
+        height: 6px;
+        margin-top: 1px;
+    }
+    .dot{
+        padding-right: 17px;
+      }
+      span:first-child{
+        padding-right: 13.5px;
+    }
+    span:last-child{
+        padding-left: -3.5px;
+    }
+    span{
+        font-size: 20px;
+    }
+}
+
