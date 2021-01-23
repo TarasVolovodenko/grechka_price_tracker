@@ -1,10 +1,15 @@
 """
 Abstract class, that defines website bs4 parser interface.
 """
+import asyncio
 
 from abc import ABC, abstractmethod
-from . import Product
 from typing import List
+from bs4 import BeautifulSoup
+from functools import partial
+
+from ...product import Product
+from ..webclient import get_html
 
 
 class BaseParser(ABC):
@@ -13,16 +18,35 @@ class BaseParser(ABC):
     Contains fields and methods, such as^
     - url : link
     """
-    _URL = ""
+    _WEBSITE_URL = ""
+    _WEBSITE_TITLE = ""
 
-    @property
-    def url(self):
+    @classmethod
+    def website_url(cls) -> str:
         """
         Getter for _URL.
         :return: value of website URL related to certain cls.
         """
-        return self._URL
+        return cls._WEBSITE_URL
 
+    @classmethod
+    def website_title(cls) -> str:
+        """
+        Getter for _WEBSITE_TITLE.
+        :return: value of website displaying name.
+        """
+        return cls._WEBSITE_TITLE
+
+    @classmethod
+    async def _get_soup(cls) -> BeautifulSoup:
+        html = await get_html(cls.website_url())
+        # Async version
+        soup = await asyncio.get_running_loop().run_in_executor(None, partial(BeautifulSoup, html, 'lxml'))
+        # Sync version
+        # soup = BeautifulSoup(html, 'lxml')
+        return soup
+
+    @classmethod
     @abstractmethod
-    async def get_products(self) -> List[Product]:
+    async def get_products(cls) -> List[Product]:
         pass
