@@ -1,0 +1,57 @@
+
+/* Навигация */
+.dot-navi{
+    text-align: center;
+    padding-top: 38px;
+    padding-bottom: 68px;
+    text-decoration: none;
+}
+span{
+    font-size: 30px;
+}
+.dot{
+    display: inline-block;
+    padding-right: 26px;
+}
+  span:first-child{
+      padding-right: 21px;
+  }
+  span:last-child{
+      padding-left: -5px;
+  }
+  .a:before {
+    content:'';
+    display: block;
+    border-radius: 50%;
+    width:9px;
+    height: 9px;
+    margin: 0 auto;
+    background-color:  #ffffff;
+    margin-top: 3px;
+  }
+
+  
+  .a:hover:before{
+    background-color:   #333333;
+  }
+  span{
+      cursor: pointer;
+      user-select:none;
+  }
+  .a,  .aActive{
+    border-radius:50%;
+    background:rgb(255, 255, 255);
+    width: 15px;
+    height: 15px;
+    border: 1px solid #333333;
+  }
+  .aActive:before{
+    content:'';
+    display: block;
+    border-radius: 50%;
+    width:9px;
+    height: 9px;
+    margin: 0 auto;
+    background-color:  #333333;
+    margin-top: 3px;
+  }
