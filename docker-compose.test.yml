@@ -4,7 +4,7 @@ services:
     build:
       context: ./services/backend
       dockerfile: Dockerfile
-    command: pytest .
+    command: pytest . -s
     volumes:
       - ./services/backend/:/usr/src/backend/
     expose:
