@@ -8,5 +8,5 @@ ENV PYTHONUNBUFFERED 1
 RUN apt-get update && pip install --upgrade pip
 COPY requirements.txt /usr/src/backend/requirements.txt
 RUN pip install -r requirements.txt
- 
+
 COPY . /usr/src/backend/
