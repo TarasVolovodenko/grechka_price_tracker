@@ -13,7 +13,7 @@ class ItemComponent extends React.Component<{
             <div className="row" >
   
               <div className="col-md-2 col-sm-2 col-4 col-xs-6 col1 align-self-center" >
-                <img src = "favicon.ico" />
+                <img src = "favicon.ico" alt="item" />
               </div>
   
               <div className= "col col-md-10 col-sm-10 col-8 col-xs-6 col2 align-self-center">

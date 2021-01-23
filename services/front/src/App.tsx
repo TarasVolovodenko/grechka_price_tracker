@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import ItemComponent from './Item';
 import axios from 'axios';
-import { throws } from 'assert';
+import Navigation from './OnlyNav';
 
 
 interface Item {
@@ -13,18 +13,17 @@ interface Item {
 };
 
 
-class App extends React.Component<{}, {items: ItemComponent[], page: number}> {
+class App extends React.Component<{}, {items: ItemComponent[]}> {
   
   constructor() {
     super({})
     this.state = {
       items: [],
-      page: 1,
     };
   }
 
   componentDidMount() {
-    axios.get('https://jsonplaceholder.typicode.com/posts')
+    axios.get('https://jsonplaceholder.typicode.com/posts/5')
     .then(res=>{
       this.setState({items: 
         res.data.map( (item: Item) =>  <ItemComponent id={item.id} title={item.title} body={item.body} userId={item.userId} /> )
@@ -36,7 +35,9 @@ class App extends React.Component<{}, {items: ItemComponent[], page: number}> {
   render() {
     return (
       <div>
+        
         {this.state.items.map( (item) => item)}
+        <Navigation />
       </div>
     );
   }
