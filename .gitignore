@@ -145,6 +145,9 @@ dmypy.json
 .env.development.local
 .env.test.local
 .env.production.local
+.env.front.pub
+
+.eslintcache
 
 npm-debug.log*
 yarn-debug.log*

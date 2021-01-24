@@ -1,16 +1,18 @@
 import logo from "./logo.svg";
 import React from "react";
 import "./OnlyNav.css";
-
-class Navigation extends React.Component<
-  {},
+import { throws } from "assert";
+interface NavProps {
+  maxPages:number;
+}
+class Navigation extends React.Component<NavProps,
   {
     pageNumber: number;
     indicator: boolean[];
-  }
-> {
-  constructor() {
-    super({});
+  } > 
+  {
+  constructor(props: NavProps) {
+    super(props);
     this.state = {
       pageNumber: 0,
       indicator: [true, false, false, false, false],
@@ -42,16 +44,16 @@ class Navigation extends React.Component<
   };
 
   leftChange = () => {
-    const indexes = this.state.indicator;
-    for (let i = 1; i < indexes.length; i++) {
-      if (indexes[i] == true) {
-        indexes[i] = false;
-        indexes[i - 1] = true;
-        break;
-      }
-    }
+    // const indexes = this.state.indicator;
+    // for (let i = 1; i < indexes.length; i++) {
+    //   if (indexes[i] == true) {
+    //     indexes[i] = false;
+    //     indexes[i - 1] = true;
+    //     break;
+    //   }
+    // }
     this.setState({
-      indicator: indexes,
+      pageNumber: this.state.pageNumber - 1 < 0 ? 0 : this.state.pageNumber
     });
   };
 
@@ -63,11 +65,10 @@ class Navigation extends React.Component<
         break;
       }
     }
-    console.log(style);
     return (
       <div className="dot-navi">
         <span onClick={this.leftChange}> &lt; </span>{" "}
-        <button className={style[0] + " dot"} onClick={() => this.handleChange(0)}>
+        {/* <button className={style[0] + " dot"} onClick={() => this.handleChange(0)}>
           {" "}
         </button>
         <button className={style[1] + " dot"} onClick={() => this.handleChange(1)}>
@@ -81,7 +82,8 @@ class Navigation extends React.Component<
         </button>
         <button className={style[4] + " dot"} onClick={() => this.handleChange(4)}>
           {" "}
-        </button>
+        </button> */}
+        <input type="number" readOnly={true} value={this.state.pageNumber + 1} name="page" min={1} max={this.props.maxPages} id="page"/>
         <span onClick={this.rightChange}> &gt; </span>{" "}
       </div>
     );
