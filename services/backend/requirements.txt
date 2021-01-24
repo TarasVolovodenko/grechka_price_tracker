@@ -4,3 +4,4 @@ aiohttp
 pytest-aiohttp
 beautifulsoup4
 lxml
+certifi

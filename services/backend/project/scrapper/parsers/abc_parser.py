@@ -12,6 +12,10 @@ from ...product import Product
 from ..webclient import get_html
 
 
+async def run_in_executor(function, *args, **kwargs):
+    return await asyncio.get_running_loop().run_in_executor(None, partial(function, *args, **kwargs))
+
+
 class BaseParser(ABC):
     """
     Base for DOM object processing classes.
@@ -41,7 +45,7 @@ class BaseParser(ABC):
     async def _get_soup(cls) -> BeautifulSoup:
         html = await get_html(cls.website_url())
         # Async version
-        soup = await asyncio.get_running_loop().run_in_executor(None, partial(BeautifulSoup, html, 'lxml'))
+        soup = await run_in_executor(BeautifulSoup, html, 'lxml')
         # Sync version
         # soup = BeautifulSoup(html, 'lxml')
         return soup

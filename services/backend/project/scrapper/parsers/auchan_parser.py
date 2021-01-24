@@ -7,18 +7,18 @@ from typing import List
 from bs4 import BeautifulSoup
 
 
-class NovusParser(BaseParser):
+class AuchanParser(BaseParser):
     """
-    Class implements NOVUS website parsing functions.
+    Class implements Auchan website parsing functions.
     """
 
-    _WEBSITE_URL = "https://novus.zakaz.ua/ru/categories/buckwheat/"
-    _WEBSITE_TITLE = "NOVUS"
+    _WEBSITE_URL = "https://auchan.zakaz.ua/ru/categories/buckwheat-auchan/"
+    _WEBSITE_TITLE = "Ашан"
 
     @classmethod
     async def get_products(cls) -> List[Product]:
         """
-        Parse from Novus website such fields as:
+        Parse from Auchan website such fields as:
             - title : displayed title
             - price : overall cost of 1 entity
             - cost : cost of 1 kg
@@ -37,10 +37,12 @@ class NovusParser(BaseParser):
                                                  item['title'])).strip()
             product_title: str = re.findall(r"[\D]*", item['title'])[0].replace(" " + product_company, "")\
                 .replace(" день", "").strip()
+            if not product_company:
+                product_company = "---"
             product_image_link = item.find(class_='product-tile__image').img['src']
             product_price = float(item.find(class_="product-tile__details")
                                       .find(class_="Price__value_caption").text)
-            product_weight_str = item.find(class_="product-tile__weight").text
+            product_weight_str: str = item.find(class_="product-tile__weight").text.replace("за ", "")
             if re.match(r"[\d]* кг", product_weight_str):
                 product_weight = float(product_weight_str.split(" кг")[0])
             elif re.match(r"[\d]* г", product_weight_str):

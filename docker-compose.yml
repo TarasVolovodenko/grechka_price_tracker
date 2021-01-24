@@ -11,6 +11,8 @@ services:
       - 8080
     env_file:
       - ./.env
+    depends_on:
+      - redis
 
 
   nginx:
@@ -22,5 +24,15 @@ services:
     depends_on:
       - backend
 
+  redis:
+    image: "redis"
+    restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
+    stop_grace_period: "${DOCKER_STOP_GRACE_PERIOD:-3s}"
+    expose:
+      - 6379
+    volumes:
+      - "redis:/data"
+
 volumes:
   static_volume:
+  redis: { }
