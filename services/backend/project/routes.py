@@ -1,4 +1,7 @@
 from aiohttp.web import Application # noqa
+from .product import Product
+from aiohttp import web  # noqa
+from .data_service import get_data
 
 
 async def profiling_route(_):
@@ -18,12 +21,15 @@ async def profiling_route(_):
     return web.Response(text=str(dict(res._asdict()))) # noqa
 
 
-async def frontend_test(_):
-    from aiohttp import web # noqa
-    from .data_service import get_data
+async def frontend_test(request):
+    # Getting request params as json
+    # request_data = await request.json()
+
     res = await get_data()
+    res_dict = list(map(lambda x: dict(x._asdict()), res)) # noqa
+    res_sorted = sorted(res_dict, key=lambda x: x["cost"])
     data = {
-        "products": list(map(lambda x: dict(x._asdict()), res)) # noqa
+        "products":  res_sorted
     }
     return web.json_response(data) # noqa
 

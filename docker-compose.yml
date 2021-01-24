@@ -13,16 +13,20 @@ services:
       - ./.env
     depends_on:
       - redis
+    networks:
+      - default
 
   nginx:
     build: ./services/nginx
     volumes:
       - static_volume:/usr/src/backend/project/static
     ports:
-      - 1228:80
+      - 1228:228
     depends_on:
       - backend
-      -
+    networks:
+      - default
+
   redis:
     image: "redis"
     restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
