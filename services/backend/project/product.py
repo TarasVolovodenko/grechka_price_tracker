@@ -2,8 +2,9 @@
 Product NamedTuple. Defines structure of parsing result.
 """
 import collections
-Product = collections.namedtuple("Product", ['title', 'cost', 'price', 'weight', 'image_link',
-                                             'website_url', 'website_title', 'manufacturer'])
+
+product_fields = ['title', 'cost', 'price', 'weight', 'image_link', 'website_url', 'website_title', 'manufacturer']
+Product = collections.namedtuple("Product", product_fields)
 
 Product.__doc__ = """
 Product: buckwheat
