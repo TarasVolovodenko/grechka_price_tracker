@@ -3,14 +3,15 @@ import './App.css';
 import ItemComponent from './Item';
 import axios, {AxiosResponse} from 'axios';
 import Navigation from './OnlyNav';
-import { Http2ServerResponse } from 'http2';
-
-
 interface Item {
-  id: number;
   title: string;
-  body: string;
-  userId: number;
+  cost: number
+  price: number;
+  weight: number;
+  image_link: string;
+  website_link: string;
+  website_title: string;
+  manufacturer: string;
 };
 
 
@@ -30,13 +31,28 @@ class App extends React.Component<{}, {items: ItemComponent[]}> {
   // }
 
   componentDidMount() {
-    axios.get('https://jsonplaceholder.typicode.com/posts')
-    .then(res=>{
-      this.setState({items:
-        res.data.map( (item: Item) =>  <ItemComponent id={item.id} title={item.title} body={item.body} userId={item.userId} /> )
+    const config = {
+      headers: {
+        // "Access-Control-Allow-Origin": "*",
+        // "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+      }
+    };
+    axios.post('http://localhost:1228/parse_data', {"sort_key": "cost", "asc": "True"}, config)
+    .then( res =>{
+      this.setState({
+        items: res.data.products.map( (item: Item) =>  <ItemComponent 
+          title={item.title}
+          cost={item.cost}
+          price={item.price}
+          weight={item.weight}
+          image_link={item.image_link}
+          website_link={item.website_link}
+          website_title={item.website_title}
+          manufacturer={item.manufacturer}
+        /> )
       })
     })
-    .catch(err=>console.log(err))
+    .catch((err: any)=>console.log(err))
   }
 
   showPage(index : number) : ItemComponent[] {

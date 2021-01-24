@@ -66,6 +66,15 @@ span {
   margin-right: 10px;
 }
 
+a.item {
+  display: block;
+}
+
+a.item img {
+  width: 100%;
+  height: auto;
+}
+
 .dot:last-child {
   margin-right: 0;
 }
