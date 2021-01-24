@@ -1,0 +1,56 @@
+
+/* Навигация */
+.dot-navi{
+    text-align: center;
+    padding-top: 38px;
+    padding-bottom: 68px;
+    text-decoration: none;
+}
+span{
+    font-size: 30px;
+}
+.dot{
+    display: inline-block;
+    outline: 0 !important; 
+}
+  span:first-child{
+      padding-right: 20px;
+  }
+  span:last-child{
+      padding-left: 20px;
+  }
+  .a:before {
+    content:'';
+    display: block;
+    border-radius: 50%;
+    width:9px;
+    height: 9px;
+    margin: 0 auto;
+    background-color:  #ffffff;
+  }
+
+  
+  .a:hover:before{
+    background-color:   #333333;
+  }
+  span{
+      cursor: pointer;
+      user-select:none;
+  }
+  .a,  .aActive{
+    border-radius:50%;
+    background:rgb(255, 255, 255);
+    width: 15px;
+    height: 15px;
+    border: 1px solid #333333;
+  }
+  .aActive:before{
+    content:'';
+    display: block;
+    border-radius: 50%;
+    width:9px;
+    height: 9px;
+    margin: auto auto;
+    background-color:  #333333;
+    
+  }

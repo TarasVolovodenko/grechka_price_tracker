@@ -43,6 +43,7 @@ class AuchanParser(BaseParser):
             product_price = float(item.find(class_="product-tile__details")
                                       .find(class_="Price__value_caption").text)
             product_weight_str: str = item.find(class_="product-tile__weight").text.replace("за ", "")
+
             if re.match(r"[\d]* кг", product_weight_str):
                 product_weight = float(product_weight_str.split(" кг")[0])
             elif re.match(r"[\d]* г", product_weight_str):
@@ -52,4 +53,5 @@ class AuchanParser(BaseParser):
             product_cost = round(product_price/product_weight, 2)
             products.append(Product(product_title, product_cost, product_price, product_weight,
                                     product_image_link, cls.website_url(), cls.website_title(), product_company))
+
         return products
