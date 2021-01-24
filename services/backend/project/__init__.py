@@ -14,4 +14,6 @@ async def create_app():
     app = web.Application()
     app.router.add_get('/health', index)
     setup_routes(app)
+
     return app
+

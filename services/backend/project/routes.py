@@ -6,6 +6,10 @@ from json.decoder import JSONDecodeError
 
 
 async def profiling_route(_):
+    """
+    Profiling application manually. This route is not registered in deployment build.
+    :return: Returns test data. Prints time of execution and mean time of several tries.
+    """
     from aiohttp import web # noqa
     from .data_service import get_data
     import time
@@ -23,6 +27,11 @@ async def profiling_route(_):
 
 
 async def main_processing(request):
+    """
+    Main application route. Parses data and forms response body.
+    :param request: request aiohttp object.
+    :return: 200 OK or 202 Accepted Response Code.
+    """
     # Getting request params as json
     try:
         request_data = await request.json()
@@ -48,13 +57,19 @@ async def main_processing(request):
         ascending = False
         sort_key = "cost"
 
+    cors_headers = {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+                    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+    }
+
     res = await get_data()
     res_dict = list(map(lambda x: dict(x._asdict()), res)) # noqa
     res_sorted = sorted(res_dict, key=lambda x: x[sort_key], reverse=ascending)
     data = {
         "products":  res_sorted
     }
-    return web.json_response(data) # noqa
+    return web.json_response(data, headers=cors_headers) # noqa
 
 
 def setup_routes(app: Application):
