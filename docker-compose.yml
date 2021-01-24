@@ -14,7 +14,6 @@ services:
     depends_on:
       - redis
 
-
   nginx:
     build: ./services/nginx
     volumes:
@@ -23,7 +22,7 @@ services:
       - 1228:80
     depends_on:
       - backend
-
+      -
   redis:
     image: "redis"
     restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
@@ -32,6 +31,19 @@ services:
       - 6379
     volumes:
       - "redis:/data"
+
+  front:
+    container_name: front
+    build:
+      context: services/front
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/usr/src/front'
+      - '/usr/src/front/node_modules'
+    ports:
+      - 80:3000
+    env_file:
+      - .env.front.pub
 
 volumes:
   static_volume:
