@@ -4,10 +4,22 @@ services:
     build:
       context: ./services/backend
       dockerfile: Dockerfile
-    command: pytest . -s
+    command: pytest . -s --durations=0
     volumes:
       - ./services/backend/:/usr/src/backend/
     expose:
       - 8080
     env_file:
       - ./.env
+  redis:
+    image: "redis"
+    restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
+    stop_grace_period: "${DOCKER_STOP_GRACE_PERIOD:-3s}"
+    expose:
+      - 6379
+    volumes:
+      - "redis:/data"
+
+volumes:
+  static_volume:
+  redis: { }

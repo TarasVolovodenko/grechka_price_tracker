@@ -11,6 +11,31 @@ services:
       - 8080
     env_file:
       - ./.env
+    depends_on:
+      - redis
+    networks:
+      - default
+
+  nginx:
+    build: ./services/nginx
+    volumes:
+      - static_volume:/usr/src/backend/project/static
+    ports:
+      - 1228:228
+    depends_on:
+      - backend
+    networks:
+      - default
+
+  redis:
+    image: "redis"
+    restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
+    stop_grace_period: "${DOCKER_STOP_GRACE_PERIOD:-3s}"
+    expose:
+      - 6379
+    volumes:
+      - "redis:/data"
+
   front:
     container_name: front
     build:
@@ -24,15 +49,6 @@ services:
     env_file:
       - .env.front.pub
 
-  nginx:
-    build: ./services/nginx
-    volumes:
-      - static_volume:/usr/src/backend/project/static
-    ports:
-      - 1228:80
-    depends_on:
-      - backend
-  
-
 volumes:
   static_volume:
+  redis: { }

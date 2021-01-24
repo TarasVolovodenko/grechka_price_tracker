@@ -17,4 +17,3 @@ fields description:
 - website_title : displaying title of certain website
 - manufacturer : company
 """
-# TODO: extend with additional columns
