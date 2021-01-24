@@ -61,5 +61,5 @@ blank
 async def test_timeout_error(new_loop): # noqa
     try:
         await get_html('https://www.eurplate.org/something_bad')
-    except ClientConnectionError as e:
+    except ConnectionError as e:
         assert e is not None
