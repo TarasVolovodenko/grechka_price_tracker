@@ -13,7 +13,6 @@ class ItemComponent extends React.Component<{
 
     render() {
         return (
-            <a className="container container-md item" href={this.props.website_link}>
             <div className="row" >
   
               <div className="col-md-2 col-sm-2 col-4 col-xs-6 col1 align-self-center" >
@@ -41,7 +40,6 @@ class ItemComponent extends React.Component<{
                 </div>
               </div>
           </div>
-          </a>
         );
     }
 }
