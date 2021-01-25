@@ -13,7 +13,6 @@ class ItemComponent extends React.Component<{
 
     render() {
       let store = <img></img>;
-      console.log(store);
       if(this.props.website_title == "Ашан"){
         store = <img src = "https://img4.zakaz.ua/store_logos/auchan.svg" alt = "Ашан" />
       }
@@ -46,18 +45,19 @@ class ItemComponent extends React.Component<{
                     <p>{this.props.weight}</p>
                   </div>
                   <div className= "new-r w-100"></div>
-                  <div className="col-2">
+                  <div className="col-2 col-sm-1.5">
                     <p>{this.props.price}</p>
                   </div>
                   <div className= "new-r w-100"></div>
-                  <div className="col-2">
+                  <div className="col-2 col-sm-1.5">
                     <p>{this.props.cost}</p>
                   </div>
                   <div className= "new-r w-100"></div>
                   <div className="col">
                     <p className = "manufacturer">{this.props.manufacturer}</p>
                   </div>
-                  <div className="col">
+                  <div className= "new-r w-100"></div>
+                  <div className="col-2 col-sm-2">
                     <div className = "store">{store}</div>
                   </div>
                 </div>
