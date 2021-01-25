@@ -12,7 +12,7 @@ class ItemComponent extends React.Component<{
   }> {
 
     render() {
-      let store = <img></img>;
+      let store = <img />;
       if(this.props.website_title == "Ашан"){
         store = <img src = "https://img4.zakaz.ua/store_logos/auchan.svg" alt = "Ашан" />
       }
@@ -35,7 +35,7 @@ class ItemComponent extends React.Component<{
               </div>
   
               <div className= "col col-md-10 col-sm-10 col-8 col-xs-6 col2 align-self-center">
-                <div className= "row">
+              <div className= "row">
                   <div className= "new-r w-100"></div>
                   <div className="col-md-3 col">
                     <p className= "name">{this.props.title}</p>
