@@ -37,7 +37,7 @@ class App extends React.Component<{}, {items: ItemComponent[]}> {
         // "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
       }
     };
-    axios.post('http://localhost:1228/parse_data', {"sort_key": "cost", "asc": "True"}, config)
+    axios.post('http://localhost:1228/parse_data', {"sort_key": "cost", "asc": "False"}, config)
     .then( res =>{
       this.setState({
         items: res.data.products.map( (item: Item) =>  <ItemComponent 
