@@ -170,3 +170,16 @@ span:last-child {
     font-size: 20px;
   }
 }
+
+
+/* чтобы не было ссылки на все */
+.container a{
+  pointer-events: none;
+  text-decoration: none;
+  color: black;
+}
+.container a:hover{
+  text-decoration: none;
+  color: black;
+}
+/* */
