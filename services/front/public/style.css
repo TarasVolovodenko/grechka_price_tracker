@@ -173,13 +173,12 @@ span:last-child {
 
 
 /* чтобы не было ссылки на все */
-.container a:not(.imlink){
-  pointer-events: none;
+.main-a{
+  cursor: pointer;
   text-decoration: none;
   color: black;
 }
-.container a:hover{
+.main-a:hover{
   text-decoration: none;
   color: black;
 }
-/* */
