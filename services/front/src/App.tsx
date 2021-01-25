@@ -9,7 +9,7 @@ interface Item {
   price: number;
   weight: number;
   image_link: string;
-  website_link: string;
+  website_url: string;
   website_title: string;
   manufacturer: string;
 };
@@ -46,7 +46,7 @@ class App extends React.Component<{}, {items: ItemComponent[]}> {
           price={item.price}
           weight={item.weight}
           image_link={item.image_link}
-          website_link={item.website_link}
+          website_url={item.website_url}
           website_title={item.website_title}
           manufacturer={item.manufacturer}
         /> )

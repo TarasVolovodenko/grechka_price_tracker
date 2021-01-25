@@ -173,7 +173,7 @@ span:last-child {
 
 
 /* чтобы не было ссылки на все */
-.container a{
+.container a:not(.imlink){
   pointer-events: none;
   text-decoration: none;
   color: black;
