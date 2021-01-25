@@ -36,6 +36,10 @@ class ItemComponent extends React.Component<{
                   </div>
                   <div className= "new-r w-100"></div>
                   <div className="col">
+                    <p>{this.props.cost}</p>
+                  </div>
+                  <div className= "new-r w-100"></div>
+                  <div className="col">
                     <p>{this.props.manufacturer}</p>
                   </div>
                 </div>
