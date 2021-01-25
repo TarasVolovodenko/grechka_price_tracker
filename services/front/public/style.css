@@ -118,6 +118,9 @@ span:last-child {
   .wrapper {
     padding: 31px;
     text-align: center;
+    font-size: 15px;
+    line-height: 18px;
+
   }
   .title {
     display: inline;
@@ -170,6 +173,11 @@ span:last-child {
   }
   span {
     font-size: 20px;
+  }
+
+
+  .name{
+    word-wrap: break-word;
   }
 }
 

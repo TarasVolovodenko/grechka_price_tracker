@@ -23,24 +23,24 @@ class ItemComponent extends React.Component<{
               <div className= "col col-md-10 col-sm-10 col-8 col-xs-6 col2 align-self-center">
                 <div className= "row">
                   <div className= "new-r w-100"></div>
-                  <div className="col">
+                  <div className="col-4">
                     <p className= "name">{this.props.title}</p>
                   </div>
                   <div className= "new-r w-100"></div>
-                  <div className="col">
+                  <div className="col-2">
                     <p>{this.props.weight}</p>
                   </div>
                   <div className= "new-r w-100"></div>
-                  <div className="col">
+                  <div className="col-2">
                     <p>{this.props.price}</p>
                   </div>
                   <div className= "new-r w-100"></div>
-                  <div className="col">
+                  <div className="col-2">
                     <p>{this.props.cost}</p>
                   </div>
                   <div className= "new-r w-100"></div>
-                  <div className="col">
-                    <p>{this.props.manufacturer}</p>
+                  <div className="col-3">
+                    <p className = "manufacturer">{this.props.manufacturer}</p>
                   </div>
                 </div>
               </div>
