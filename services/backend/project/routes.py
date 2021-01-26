@@ -57,21 +57,13 @@ async def main_processing(request):
         ascending = False
         sort_key = "cost"
 
-    # cors_headers = {
-    #                 'Access-Control-Allow-Origin': '*',
-    #                 'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-    #                 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-    # }
-
     res = await get_data()
     res_dict = list(map(lambda x: dict(x._asdict()), res)) # noqa
     res_sorted = sorted(res_dict, key=lambda x: x[sort_key], reverse=ascending)
     data = {
         "products":  res_sorted
     }
-    return web.json_response(data
-                             # ,headers=cors_headers
-                             ) # noqa
+    return web.json_response(data) # noqa
 
 
 def setup_routes(app: Application):

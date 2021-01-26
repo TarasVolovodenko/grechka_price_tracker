@@ -35,10 +35,10 @@ class AuchanParser(BaseParser):
         for item in items_html.find_all(class_="product-tile"):
             product_company = ''.join(re.findall(r"\s[А-ЯA-Z]+[а-яА-ЯA-Za-z\'\"()]*",
                                                  item['title'])).strip()
-            product_title: str = re.findall(r"[\D]*", item['title'])[0].replace(" " + product_company, "")\
-                .replace(" день", "").strip()
             if not product_company:
                 product_company = "---"
+            product_title: str = re.findall(r"[\D]*", item['title'])[0].replace(" " + product_company, "")\
+                .replace(" день", "").strip()
             product_image_link = item.find(class_='product-tile__image').img['src']
             product_price = float(item.find(class_="product-tile__details")
                                       .find(class_="Price__value_caption").text)
