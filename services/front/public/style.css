@@ -113,7 +113,7 @@ span:last-child {
 
 
 
-/* чтобы не было ссылки на все */
+/* Обработка ссылки */
 .main-a{
   cursor: default;
   text-decoration: none;
