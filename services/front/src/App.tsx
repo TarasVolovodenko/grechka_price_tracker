@@ -90,6 +90,9 @@ handleSortFalse = (key: any) => {
   })
 }
 handleSortTrue = (key: any) =>{
+    this.setState({
+    sort: key
+  })
   const config = {
   };
   axios.post('http://localhost:1228/parse_data', {"sort_key": key, "asc": "True"}, config)
@@ -143,14 +146,14 @@ handleSortTrue = (key: any) =>{
                   <div className= "new-r w-100"></div>
                   <div className="col col-sm col-menu">
                     <p>Цена, грн</p>
-                    <button type="button" className ="btn btn-light btn-sm" onClick = {() => this.handleSortFalse("cost")}>&#8593;</button>
-                    <button type="button" className ="btn btn-light btn-sm" onClick = {() => this.handleSortTrue("cost")}>&#8595;</button>
+                    <button type="button" className ="btn btn-light btn-sm" onClick = {() => this.handleSortFalse("price")}>&#8593;</button>
+                    <button type="button" className ="btn btn-light btn-sm" onClick = {() => this.handleSortTrue("price")}>&#8595;</button>
                   </div>
                   <div className= "new-r w-100"></div>
                   <div className="col col-sm col-menu">
                     <p>Цена за кг</p>
-                    <button type="button" className ="btn btn-light btn-sm" onClick = {() => this.handleSortFalse("price")}>&#8593;</button>
-                    <button type="button" className ="btn btn-light btn-sm" onClick = {() => this.handleSortTrue("price")}>&#8595;</button>
+                    <button type="button" className ="btn btn-light btn-sm" onClick = {() => this.handleSortFalse("cost")}>&#8593;</button>
+                    <button type="button" className ="btn btn-light btn-sm" onClick = {() => this.handleSortTrue("cost")}>&#8595;</button>
                   </div>
                   <div className= "new-r w-100"></div>
                   <div className="col col-menu">
