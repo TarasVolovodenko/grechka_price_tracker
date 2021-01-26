@@ -1,7 +1,7 @@
 from aiohttp.web import Application # noqa
 from .product import product_fields
 from aiohttp import web  # noqa
-from .data_service import get_data
+from .data_service import update_data_loop
 from json.decoder import JSONDecodeError
 
 
@@ -57,8 +57,7 @@ async def main_processing(request):
         ascending = False
         sort_key = "cost"
 
-    res = await get_data()
-    res_dict = list(map(lambda x: dict(x._asdict()), res)) # noqa
+    res_dict = await update_data_loop()
     res_sorted = sorted(res_dict, key=lambda x: x[sort_key], reverse=ascending)
     data = {
         "products":  res_sorted

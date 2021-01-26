@@ -28,7 +28,6 @@ class RedisStatusService(AbstractKeyValueService):
         """
         try:
             timestamp = await cls._get("status_timestamp")
-            print(timestamp)
             if timestamp == str(RedisOnProcess()):
                 return RedisOnProcess()
             elif time() - float(timestamp) < eval_time:
