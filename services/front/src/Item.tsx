@@ -45,7 +45,7 @@ class ItemComponent extends React.Component<{
                     <p>{this.props.weight}</p>
                   </div>
                   <div className= "new-r w-100"></div>
-                  <div className="col-2 col-sm-1.5">
+                  <div className="col-2 col-sm-1">
                     <p>{this.props.price}</p>
                   </div>
                   <div className= "new-r w-100"></div>
@@ -57,7 +57,7 @@ class ItemComponent extends React.Component<{
                     <p className = "manufacturer">{this.props.manufacturer}</p>
                   </div>
                   <div className= "new-r w-100"></div>
-                  <div className="col-2 col-sm-2">
+                  <div className="col-1 col-sm-2">
                     <div className = "store">{store}</div>
                   </div>
                 </div>
