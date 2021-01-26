@@ -10,7 +10,9 @@
 .title {
   display: none;
 }
-
+.team-name{
+  padding-bottom: 20px;
+}
 /* Обертка для всего контента страницы */
 .wrapper {
   font-family: Montserrat;
@@ -122,7 +124,9 @@ span:last-child {
   color: black;
 }
 
-
+button{
+  box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.1);
+}
 
 @media (max-width: 992px) {
   .container:not(.col1) {
@@ -138,6 +142,9 @@ span:last-child {
 
 @media (max-width: 768px) {
   .column-name {
+    display: none;
+  }
+  .menu {
     display: none;
   }
   .wrapper {
@@ -164,9 +171,26 @@ span:last-child {
   .manufacturer{
     word-wrap: break-word;
   }
+  .main-a {
+    display: none;
+  }
 }
 
 @media (max-width: 576px) {
+  button{
+    font: 10px;
+    box-shadow: none;
+  }
+  .col-menu p{
+    display: inline-block;
+  }
+  /*.сol-menu{
+    padding: 0;
+    margin: 0;
+  }*/
+  .col1-menu{
+    display: none;
+  }
   .wrapper {
     font-size: 12px;
     line-height: 14px;
@@ -214,6 +238,4 @@ span:last-child {
   }
 }
 
-button{
-  box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.1);
-}
+
