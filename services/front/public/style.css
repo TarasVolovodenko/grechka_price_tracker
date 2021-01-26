@@ -18,11 +18,15 @@
   margin: 0 auto;
   margin-top: 50px;
   font-weight: normal;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 17px;
+  line-height: 20px;
 }
 /**/
-
+/*ограничиваю название*/
+.name{
+  max-width: 105px;
+  word-wrap: break-word;
+}
 /* Таблица наименований гречки */
 .column-name {
   font-weight: 500;
@@ -103,10 +107,33 @@ span:last-child {
   background-color: #333333;
 }
 
+
+
+
+
+/* чтобы не было ссылки на все */
+.main-a{
+  cursor: default;
+  text-decoration: none;
+  color: black;
+}
+.main-a:hover{
+  text-decoration: none;
+  color: black;
+}
+
+
+
 @media (max-width: 992px) {
   .container:not(.col1) {
     text-align: left;
   }
+  
+  .column-name {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+}
 }
 
 @media (max-width: 768px) {
@@ -116,6 +143,9 @@ span:last-child {
   .wrapper {
     padding: 31px;
     text-align: center;
+    font-size: 13px;
+    line-height: 16px;
+
   }
   .title {
     display: inline;
@@ -127,16 +157,24 @@ span:last-child {
   .container {
     margin-top: 36px;
   }
+
+  .name{
+    max-width: 80px;
+  }
+  .manufacturer{
+    word-wrap: break-word;
+  }
 }
 
 @media (max-width: 576px) {
   .wrapper {
-    font-size: 10px;
-    line-height: 12px;
+    font-size: 12px;
+    line-height: 14px;
   }
   .name {
     font-size: 14px;
     line-height: 17px;
+    font-weight: 500;
   }
   .container {
     padding: 26px;
@@ -169,4 +207,13 @@ span:last-child {
   span {
     font-size: 20px;
   }
+
+
+  .name{
+    max-width:fit-content;
+  }
+}
+
+button{
+  box-shadow: 0px 0px 25px 4px rgba(0, 0, 0, 0.1);
 }
