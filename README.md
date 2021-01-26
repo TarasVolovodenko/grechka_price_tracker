@@ -35,5 +35,3 @@ API is running on ```http://localhost:1228```.
 If the main content of the page will not load, **restart of services (Step 2)** may help with access troubles.
 
 
-
-
