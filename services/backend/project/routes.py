@@ -58,7 +58,10 @@ async def main_processing(request):
         sort_key = "cost"
 
     res_dict = await update_data_loop()
-    res_sorted = sorted(res_dict, key=lambda x: x[sort_key], reverse=ascending)
+    if sort_key == 'cost' or sort_key == 'price' or sort_key == 'weight':
+        res_sorted = sorted(res_dict, key=lambda x: float(x[sort_key]), reverse=ascending)
+    else:
+        res_sorted = sorted(res_dict, key=lambda x: x[sort_key], reverse=ascending)
     data = {
         "products":  res_sorted
     }
